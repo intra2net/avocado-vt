@@ -51,7 +51,7 @@ class Libvirtd(object):
         self.service_list = []
 
         if LIBVIRTD is None:
-            logging.warning("Libvirtd service is not available in host, "
+            logging.debug("Libvirtd service is not available in host, "
                             "utils_libvirtd module will not function normally")
 
         self.service_name = "libvirtd" if not service_name else service_name
