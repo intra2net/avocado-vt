@@ -333,6 +333,9 @@ class VirtTest(test.Test, utils.TestUtils):
                         env.destroy()  # Force-clean as it can't be stored
 
         except Exception as e:
+            if getattr(e, "_pyroTraceback", None) is not None:
+                from Pyro5 import errors
+                self.log.error("".join(errors.get_pyro_traceback()))
             if params.get("abort_on_error") != "yes":
                 raise
             # Abort on error
