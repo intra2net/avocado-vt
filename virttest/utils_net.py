@@ -1386,6 +1386,7 @@ def open_tap(devname, ifname, queues=1, vnet_hdr=True):
 
         ifr = struct.pack("16sh", ifname.encode(), flags)
         try:
+            time.sleep(1)
             r = fcntl.ioctl(int(tapfds[i]), arch.TUNSETIFF, ifr)
         except IOError as details:
             raise TAPCreationError(ifname, details)
